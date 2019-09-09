@@ -1,0 +1,40 @@
+{block content}
+
+<style>
+
+	body { background: #3484d2; color: #333; margin: 2em auto; padding: 0 .5em; max-width: 1200px; min-width: 850px; }
+</style>
+
+<div id="banner">
+	<h1 n:block=title>Správa krabiček</h1>
+</div>
+<div class="logoutsection">{if $iamAdmin}<a n:href="Admin:Default">Administrace</a> - {/if} <a n:href="logout!">Odhlásit</a></div>
+
+<div id="content">
+
+	<h2>Vaše krabičky</h2>
+	<div>Zde vidíte vámi spravované krabičky.</br>
+	V tomto seznamu lze také upravovat kódy ke krabičkám (ikonka propisky vedle krabičky, kterou chcete upravovat).</br>
+	Pokud zde chybí krabička, kterou chcete spravovat, přidejte jí do seznamu za pomocí jejího kódu, který najdete na krabičce:</div>
+	<div>
+		{control simpleAddBoxForm}
+		{control boxGrid}
+	</div>
+
+	<h2>Nastavení odemikání</h2>
+	<div>Zde nastavujete odemikání vašich krabiček. Pro nastavení podmínky odemknutí krabičky tlačítko ikonu propisky vedle krabičky, kterou chcete nastavovat:</p>
+		<p><b>1) Vyberte krabičku, pro kterou budete podmínku odemknutí nastavovat</b></p>
+		<p><b>2) Vyplňte další údaje:</b>
+			<li><b>Příběh</b> - zobrazí se obdarovanému před nalezením krabičky (lze využít jako nápovědu pro vyhledávanou lokaci).</li>
+			<li><b>Lat, Lon</b> - geografické zouřadnice na kterých se krabička odemkne - (uživatel získá heslo v případě, že se přiblíží na 30 metrů k těmto souřadnicím). Nezadávejte je, v přípdě, že chcete nastavit odemčení na určité adrese.</li>
+			<li><b>Adresa</b> - zadávejte pouze v případě, že jste <b>nezadali Lat/Lon</b> - v takovém případě vygenerují se podle této adresy. (V případě zadaných lat/lon adresa slouží pouze orientačně)</li>
+			<li><b>Čas otevření</b> - čas při kterém se krabička automaticky otevře. Nastavujte pomocí dialogu, nebo ve formátu 2018-12-22 13:30.</li>
+		</p>
+		Jedna krabička může mít více podmínek otevření. Každá podmínka otevření se musí vázat buď na čas, nebo lokaci.
+	</div>
+	<div>
+		{control unlockGrid}
+	</div>
+</div>
+
+

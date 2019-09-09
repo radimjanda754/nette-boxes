@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+
+	<!-- Use this css for that pretty checkboxes (https://github.com/paveljanda/happy) -->
+	<link rel="stylesheet" type="text/css" href="/bower_components/happy/dist/happy.css">
+	<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+	<link rel="stylesheet" type="text/css" href="/bower_components/ublaboo-datagrid/assets/dist/datagrid.css">
+
+	<!-- Use this css for ajax spinners -->
+	<link rel="stylesheet" type="text/css" href="/bower_components/ublaboo-datagrid/assets/dist/datagrid-spinners.css">
+
+	<!-- Include this css when using FilterMultiSelect (silviomoreto.github.io/bootstrap-select) -->
+	<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap-select/dist/css/bootstrap-select.css">
+
+	<link rel="stylesheet" type="text/css" href="/bower_components/components-font-awesome/css/fontawesome-all.css">
+
+	<style>
+		html { font: normal 14px/1.3 Georgia, "New York CE", utopia, serif; color: #666; -webkit-text-stroke: 1px rgba(0,0,0,0); overflow-y: scroll; }
+		body { background: #3484d2; color: #333; margin: 2em auto; padding: 0 .5em; max-width: 800px; }
+
+		a { color: #006aeb; padding: 3px 1px; }
+		a:hover, a:active, a:focus { background-color: #006aeb; text-decoration: none; color: white; }
+
+		#banner { border-radius: 12px 12px 0 0; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAB5CAMAAADPursXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGBQTFRFD1CRDkqFDTlmDkF1D06NDT1tDTNZDk2KEFWaDTZgDkiCDTtpDT5wDkZ/DTBVEFacEFOWD1KUDTRcDTFWDkV9DkR7DkN4DkByDTVeDC9TDThjDTxrDkeADkuIDTRbDC9SbsUaggAAAEdJREFUeNqkwYURgAAQA7DH3d3335LSKyxAYpf9vWCpnYbf01qcOdFVXc14w4BznNTjkQfsscAdU3b4wIh9fDVYc4zV8xZgAAYaCMI6vPgLAAAAAElFTkSuQmCC); }
+
+		h1 { font: inherit; color: white; font-size: 50px; line-height: 121px; margin: 0; padding-left: 4%; background: url(https://files.nette.org/images/logo-nette@2.png) no-repeat 95%; background-size: 130px auto; text-shadow: 1px 1px 0 rgba(0, 0, 0, .9); }
+		@media (max-width: 600px) {
+			h1 { background: none; font-size: 40px; }
+		}
+
+		#content { background: white; border: 1px solid #eff4f7; border-radius: 0 0 12px 12px; padding: 5px 2%; overflow: hidden; }
+
+		h2 { font: inherit; padding-top: 10px; margin: 0;  font-weight: bold; font-size: 30px;}
+
+		img { border: none; float: right; margin: 0 0 1em 3em; }
+
+		.flash { color: white; font-size: 16px; padding: 8px; border-radius: 5px; border: 1px solid #FFFFFF;}
+		.flash.success { background: green;}
+		.flash.error { background: red;}
+
+		div { padding: 5px; }
+
+		.logoutsection { background: #BBBBBB; text-align: right; font-weight: bold; padding-right: 10px; }
+	</style>
+
+	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+</head>
+
+<body>
+	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+	{include content}
+
+	{block scripts}
+		<script src="/bower_components/jquery/dist/jquery.js"></script>
+    	<script src="/bower_components/nette-forms/src/assets/netteForms.js"></script>
+    	<script src="/bower_components/nette.ajax.js/nette.ajax.js"></script>
+
+    	<!-- Use this tiny js for that pretty checkboxes (https://github.com/paveljanda/happy) -->
+    	<script src="/bower_components/happy/dist/happy.js"></script>
+    	<script src="/bower_components/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    	<script src="/bower_components/jquery-ui-sortable/jquery-ui-sortable.js"></script>
+    	<script src="/bower_components/ublaboo-datagrid/assets/dist/datagrid.js"></script>
+
+    	<!-- It is recommended to include this JS file with just a few bits. It refreshes URL on non ajax request -->
+    	<script src="/bower_components/ublaboo-datagrid/assets/dist/datagrid-instant-url-refresh.js"></script>
+
+    	<!-- Use this little extension for ajax spinners -->
+    	<script src="/bower_components/ublaboo-datagrid/assets/dist/datagrid-spinners.js"></script>
+
+    	<!-- Include bootstrap.js for proper behaviour of ColumnStatus -->
+    	<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    	<!-- Include bootstrap-select.js when using FilterMultiSelect (silviomoreto.github.io/bootstrap-select) -->
+    	<script src="/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+
+    	<!-- Initialize nette.ajax.js after loading the DOM. -->
+        <script>
+            $.nette.init();
+        </script>
+
+		<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+	{/block}
+</body>
+</html>
